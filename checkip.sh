@@ -1,5 +1,5 @@
 #!/bin/bash
-NOTIFICATION=`notification mail address`
+NOTIFICATION="notification mail address"
 URLIP=`curl -s http://ddns.oray.com/checkip | awk -F ": " '{print $2}' | awk -F "<" '{print $1}'`
 if [ -a "~/myscript/ip.txt" ]; then
   LOGIP=$(cat ./ip.txt)
