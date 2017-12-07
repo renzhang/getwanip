@@ -19,5 +19,5 @@ if [ "$URLIP" != "$LOGIP" ]; then
   echo "" >> ~/myscript/ip_msg.txt
   echo "Current IP is: $URLIP (From:$LOGIP)" >> ~/myscript/ip_msg.txt
   echo "" >> ~/myscript/ip_msg.txt
-  /etc/sbin/ssmtp $NOTFICATION < ~/myscript/ip_msg.txt
+  /usr/sbin/ssmtp $NOTFICATION < ~/myscript/ip_msg.txt
 fi
