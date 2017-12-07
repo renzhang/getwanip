@@ -15,11 +15,9 @@ if [ "$URLIP" != "$LOGIP" ]; then
   echo "$URLIP" >> ~/myscript/ip.txt
   cp ~/myscript/ip.txt ~/myscript/Incoming/ip.txt
   touch ~/myscript/ip_msg.txt
-  echo "To: renzh@outlook.com" >> ~/myscript/ip_msg.txt
-  echo "From: ren.zh@foxmail.com" >> ~/myscript/ip_msg.txt
-  echo "Subject: Ubuntu HLG Public IP address rolled!" >> ~/myscript/ip_msg.txt
+  echo "Subject:Public IP address rolled!" >> ~/myscript/ip_msg.txt
   echo "" >> ~/myscript/ip_msg.txt
   echo "Current IP is: $URLIP (From:$LOGIP)" >> ~/myscript/ip_msg.txt
   echo "" >> ~/myscript/ip_msg.txt
-  ssmtp $NOTFICATION < ~/myscript/ip_msg.txt
+  /etc/sbin/ssmtp $NOTFICATION < ~/myscript/ip_msg.txt
 fi
