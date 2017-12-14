@@ -1,6 +1,17 @@
 #!/bin/bash
 NOTIFICATION="notification mail address"
-URLIP=`curl -s http://ddns.oray.com/checkip | awk -F ": " '{print $2}' | awk -F "<" '{print $1}'`
+URLIP=''
+cntipget=5
+# to fix issue when ip from URL is none (sometimes), sending fault notification
+# 5 times get URLIP
+while [ -z "URLIP"]
+do
+  URLIP=`curl -s http://ddns.oray.com/checkip | awk -F ": " '{print $2}' | awk -F "<" '{print $1}'`
+  if [ $cntipget -le 0 ]; then
+    break
+  fi
+  cntipget=`expr $cntipget - 1`
+done
 if [ -a "~/myscript/ip.txt" ]; then
   LOGIP=$(cat ./ip.txt)
 else
